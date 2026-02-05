@@ -1,0 +1,121 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum SeatStatus {
+  AVAILABLE
+  LOCKED
+  BOOKED
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  REFUNDED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         Role      @default(USER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  bookings     Booking[]
+  events       Event[]
+  lockedSeats  Seat[]
+}
+
+model Event {
+  id             String    @id @default(uuid())
+  name           String
+  description    String
+  venue          String
+  category       String    @default("Other")
+  eventDate      DateTime
+  totalSeats     Int
+  availableSeats Int
+  bannerImage    String?
+  createdBy      String
+  creator        User      @relation(fields: [createdBy], references: [id])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  seats          Seat[]
+  bookings       Booking[]
+}
+
+model Seat {
+  id           String        @id @default(uuid())
+  eventId      String
+  event        Event         @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  seatNumber   String
+  row          String
+  section      String
+  price        Float
+  status       SeatStatus    @default(AVAILABLE)
+  lockedUntil  DateTime?
+  lockedBy     String?
+  lockedByUser User?         @relation(fields: [lockedBy], references: [id])
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  bookingSeats BookingSeat[]
+
+  @@index([eventId, status])
+  @@index([lockedUntil])
+}
+
+model Booking {
+  id            String        @id @default(uuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id])
+  eventId       String
+  event         Event         @relation(fields: [eventId], references: [id])
+  totalAmount   Float
+  status        BookingStatus @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  paymentMethod String?
+  transactionId String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  bookingSeats  BookingSeat[]
+  ticket        Ticket?
+
+  @@index([userId])
+}
+
+model BookingSeat {
+  id             String   @id @default(uuid())
+  bookingId      String
+  booking        Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  seatId         String
+  seat           Seat     @relation(fields: [seatId], references: [id])
+  priceAtBooking Float
+  createdAt      DateTime @default(now())
+}
+
+model Ticket {
+  id        String    @id @default(uuid())
+  bookingId String    @unique
+  booking   Booking   @relation(fields: [bookingId], references: [id])
+  qrCode    String    @unique
+  isValid   Boolean   @default(true)
+  issuedAt  DateTime  @default(now())
+  scannedAt DateTime?
+}
