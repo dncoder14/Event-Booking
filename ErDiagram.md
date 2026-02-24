@@ -5,6 +5,7 @@
 erDiagram
     USERS ||--o{ BOOKINGS : makes
     USERS ||--o{ EVENTS : creates
+    USERS ||--o{ SEATS : locks
     EVENTS ||--o{ SEATS : contains
     EVENTS ||--o{ BOOKINGS : has
     BOOKINGS ||--o{ BOOKING_SEATS : includes
@@ -26,9 +27,11 @@ erDiagram
         varchar name
         text description
         varchar venue
+        varchar category
         timestamp event_date
         int total_seats
         int available_seats
+        varchar banner_image
         uuid created_by FK
         timestamp created_at
         timestamp updated_at
@@ -40,7 +43,7 @@ erDiagram
         varchar seat_number
         varchar row
         varchar section
-        decimal price
+        float price
         enum status "AVAILABLE, LOCKED, BOOKED"
         timestamp locked_until
         uuid locked_by FK
@@ -52,7 +55,7 @@ erDiagram
         uuid id PK
         uuid user_id FK
         uuid event_id FK
-        decimal total_amount
+        float total_amount
         enum status "PENDING, CONFIRMED, CANCELLED"
         enum payment_status "PENDING, PAID, REFUNDED"
         varchar payment_method
@@ -65,7 +68,7 @@ erDiagram
         uuid id PK
         uuid booking_id FK
         uuid seat_id FK
-        decimal price_at_booking
+        float price_at_booking
         timestamp created_at
     }
     

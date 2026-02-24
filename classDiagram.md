@@ -122,10 +122,10 @@ classDiagram
         -id: string
         -name: string
         -email: string
-        -password: string
+        -passwordHash: string
         -role: Role
         -createdAt: Date
-        +validatePassword(password): boolean
+        -updatedAt: Date
         +toJSON(): object
     }
     
@@ -134,12 +134,14 @@ classDiagram
         -name: string
         -description: string
         -venue: string
-        -date: Date
+        -category: string
+        -eventDate: Date
         -totalSeats: number
         -availableSeats: number
+        -bannerImage: string
         -createdBy: string
-        +isBookable(): boolean
-        +updateAvailability(count): void
+        -createdAt: Date
+        -updatedAt: Date
     }
     
     class Seat {
@@ -151,11 +153,9 @@ classDiagram
         -price: number
         -status: SeatStatus
         -lockedUntil: Date
-        -userId: string
-        +isAvailable(): boolean
-        +lock(userId, duration): void
-        +book(userId): void
-        +release(): void
+        -lockedBy: string
+        -createdAt: Date
+        -updatedAt: Date
     }
     
     class Booking {
