@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#93000a",
+                      "secondary": "#4cd7f6",
+                      "inverse-surface": "#e5e2e3",
+                      "primary-fixed-dim": "#d0bcff",
+                      "on-surface": "#e5e2e3",
+                      "on-primary-container": "#340080",
+                      "tertiary-container": "#ca801e",
+                      "surface-bright": "#3a393a",
+                      "surface-tint": "#d0bcff",
+                      "on-secondary-fixed-variant": "#004e5c",
+                      "outline-variant": "#494454",
+                      "surface-container-highest": "#353436",
+                      "on-primary-fixed": "#23005c",
+                      "outline": "#958ea0",
+                      "surface": "#131314",
+                      "on-secondary-fixed": "#001f26",
+                      "on-secondary-container": "#00424e",
+                      "secondary-fixed": "#acedff",
+                      "error": "#ffb4ab",
+                      "on-background": "#e5e2e3",
+                      "secondary-container": "#03b5d3",
+                      "on-primary": "#3c0091",
+                      "on-tertiary-container": "#3f2300",
+                      "surface-container-lowest": "#0e0e0f",
+                      "secondary-fixed-dim": "#4cd7f6",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#ffdcbb",
+                      "tertiary": "#ffb869",
+                      "on-surface-variant": "#cbc3d7",
+                      "inverse-on-surface": "#313031",
+                      "inverse-primary": "#6d3bd7",
+                      "surface-container": "#201f20",
+                      "on-tertiary-fixed-variant": "#673d00",
+                      "primary-container": "#a078ff",
+                      "tertiary-fixed-dim": "#ffb869",
+                      "background": "#131314",
+                      "primary-fixed": "#e9ddff",
+                      "on-primary-fixed-variant": "#5516be",
+                      "surface-dim": "#131314",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary": "#003640",
+                      "primary": "#d0bcff",
+                      "surface-container-high": "#2a2a2b",
+                      "on-tertiary": "#482900",
+                      "surface-container-low": "#1c1b1c",
+                      "on-tertiary-fixed": "#2c1700",
+                      "surface-variant": "#353436"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {},
+              "fontFamily": {
+                      "headline": ["Plus Jakarta Sans"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(42, 42, 43, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131314]/80 backdrop-blur-[20px] shadow-[0_0_40px_rgba(139,92,246,0.1)]">
+<div class="flex justify-between items-center px-8 h-20 w-full">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black tracking-tighter text-[#d0bcff] uppercase font-['Plus_Jakarta_Sans']">Nocturne</span>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#e5e2e3]/70 font-medium font-['Plus_Jakarta_Sans'] tracking-[-0.02em] hover:text-[#4cd7f6] transition-all duration-300" href="#">Explore</a>
+<a class="text-[#d0bcff] border-b-2 border-[#8B5CF6] pb-1 font-['Plus_Jakarta_Sans'] tracking-[-0.02em] hover:text-[#4cd7f6] transition-all duration-300" href="#">Bookings</a>
+<a class="text-[#e5e2e3]/70 font-medium font-['Plus_Jakarta_Sans'] tracking-[-0.02em] hover:text-[#4cd7f6] transition-all duration-300" href="#">VIP</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-lowest border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary outline-none" placeholder="Search events..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User avatar" data-alt="Close-up portrait of a stylish man with a modern haircut in a dimly lit, atmospheric setting with purple neon highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_DxVGVJzk12Ix-OEnKjlyKdZktgW3jEvNd3S5M14rSHOiFeT0qkge704Twi2_w1twwqyZmXtiHnoXkSvrxT5E66oREO8qTKQSGsP8EJgri9CKH85VXQkd9Iq2VbY6TSON5jIpCYaVAVOcogIdSwqaDisis_HIxsvKdAM6XEMgjGAtOV1WqL2MFgpwjZeyPpDpr0JeDYgSBR2LwucTEWagMP5OG9vGTNlKQs3Y2dha5WeH3QelBz4oBgwFlDWy9lNT8Bo3yb2gdvc"/>
+</div>
+</div>
+</div>
+<div class="h-px w-full bg-gradient-to-r from-transparent via-outline-variant/20 to-transparent"></div>
+</nav>
+<main class="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto min-h-screen">
+<!-- Page Header -->
+<header class="mb-12 relative">
+<div class="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
+<div class="absolute -top-10 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-[120px]"></div>
+<h1 class="text-5xl md:text-6xl font-black font-headline tracking-tighter text-on-surface mb-4">My Bookings</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl">Manage your upcoming nocturnal experiences and revisit past memories.</p>
+</header>
+<!-- Section: Upcoming -->
+<section class="mb-16">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="text-sm font-bold font-headline uppercase tracking-widest text-primary">Upcoming Events</h2>
+<div class="h-px flex-grow bg-outline-variant/20"></div>
+</div>
+<div class="grid gap-6">
+<!-- Booking Card 1 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col md:flex-row items-stretch group border border-outline-variant/10 hover:border-primary/30 transition-all duration-500">
+<div class="w-full md:w-72 h-48 md:h-auto overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Vibrant night club scene with crowd dancing under intense purple and blue laser lights and fog effects" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1nzDc71u-EPAfr4Gr8DEvRUB2dnKbbMCWbZNByPjI7bheWoTMhdvEORvOy-jSUCCPPXJbpnA-rxxkBnnIdx8LDARTe4tyKjFNWEVzT3_rqxKGYdSc4UoKDuG939cSu_uDjmx15u99rJK9UnBtLvsgvrdU6dy7pD8Hc1x1bD4tsbhEVP2jJuCwM_cmHarwQW5bkyyLxBRVxgDkvGEo47qHcGdmr69aSgTj4ohVUebDD58BZ4ygQwyBWIiMgLNFAMW7mhlnzCS59Hc"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-widest rounded-full flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-on-secondary-container rounded-full animate-pulse"></span>
+                                Confirmed
+                            </span>
+</div>
+</div>
+<div class="flex-grow p-6 md:p-8 flex flex-col justify-between">
+<div class="flex flex-col md:flex-row justify-between gap-4">
+<div>
+<span class="text-tertiary text-xs font-bold uppercase tracking-widest mb-1 block">Warehouse Series</span>
+<h3 class="text-2xl font-bold font-headline mb-2 text-on-surface">Neon Underground: Phase IV</h3>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Oct 24, 2024</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">schedule</span> 22:00 - 04:00</span>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-surface-container-highest px-4 py-2 rounded-lg text-center border border-outline-variant/20">
+<span class="block text-[10px] uppercase font-bold text-outline">Ticket Type</span>
+<span class="text-primary font-bold">VIP Access</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex flex-wrap items-center justify-between gap-6">
+<div class="flex -space-x-3">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Portrait of a young woman with warm lighting and a natural smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoGAqdv1pgp6-YourPPZM4tFa8onV1be4ggLFc_bdVvPpNICn16gwwGK5dpThmkOh1S1B521jpyIJtOW6964TfDcEi37VF6jKpFmMt_wu442qmA5RkeBVcolrD1bt3vnZxaTi-XwYyNeH_cSdxnR79zwiqwZvcdY7iw8IZnLTfTlcu6IjV_o45s_q7qjYPVFbBMCuwkSLKjIgS7yQ--qyJFciQ9AIvHe5Ha2WuWqpPl2TGSg4f3FIrk44HMuOF5lLlG0SjeUm6kww"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="Studio portrait of a man with short hair and clean-shaven face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArEZiKvRdmAvzfp6VMZi8I0yCSYR89V6VHUTZauRiUZaZOVUtLefLQ99--70-Ik3O3VjmAwyKs8jMKweWwzVRDKeueJG-uhpQof1KOnhlgjujb0v_a3ACzBTVDNG3HGVGzA91yLwp0BRrEZXde4iF-6Fle6Euc_Cqgug9g_dSKQQkiQekBclqoetxYhV2rgAGPT-Z4r4eG53kTyxKYsu_ZBpVe16fjqclJwhVIb4o3a1NyI1cAeWzBx9lSy11USJqcdRAhILpjU7s"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+12</div>
+<span class="ml-6 text-xs text-on-surface-variant flex items-center">Friends attending</span>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-xl font-bold text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                                View Ticket
+                            </button>
+</div>
+</div>
+</div>
+<!-- Booking Card 2 -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col md:flex-row items-stretch group border border-outline-variant/10 hover:border-primary/30 transition-all duration-500">
+<div class="w-full md:w-72 h-48 md:h-auto overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Luxury rooftop lounge at night with soft ambient lighting, high-end furniture, and city skyline view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcZBsTBNOCIqAfPWqhCjU32UAJ8d5zRCL0uCOZx0op-8m-0TMjKyACNCJ0buBV49x5ZJNFveJcLr_d_KJBjT6rvmmapsN7U_L2aIxnXIjWgV0gZ-spMWQu6yxdiIQD2YooMgo2hmeoP8oQ0-Jpb_TGudio4U7RTX0IICF7z2MyV3RZalDM3teJ2uBR6U0WQgWe6fQwQzYPVMmcy7BB5J2J37qK-ACv_SST7xAeUb15ZuxKuL3WkuJzGno57zuy_crsOJHji0n9q9s"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-widest rounded-full flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-on-secondary-container rounded-full animate-pulse"></span>
+                                Confirmed
+                            </span>
+</div>
+</div>
+<div class="flex-grow p-6 md:p-8 flex flex-col justify-between">
+<div class="flex flex-col md:flex-row justify-between gap-4">
+<div>
+<span class="text-secondary text-xs font-bold uppercase tracking-widest mb-1 block">Skyline Lounge</span>
+<h3 class="text-2xl font-bold font-headline mb-2 text-on-surface">Midnight Jazz &amp; Cocktails</h3>
+<div class="flex items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">calendar_today</span> Oct 31, 2024</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-base">schedule</span> 21:00 - 01:00</span>
+</div>
+</div>
+<div class="flex items-start">
+<div class="bg-surface-container-highest px-4 py-2 rounded-lg text-center border border-outline-variant/20">
+<span class="block text-[10px] uppercase font-bold text-outline">Ticket Type</span>
+<span class="text-primary font-bold">Standard Table</span>
+</div>
+</div>
+</div>
+<div class="mt-8 flex flex-wrap items-center justify-end">
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-xl font-bold text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-[0_0_20px_rgba(139,92,246,0.3)]">
+                                View Ticket
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Past -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<h2 class="text-sm font-bold font-headline uppercase tracking-widest text-outline">Past Events</h2>
+<div class="h-px flex-grow bg-outline-variant/20"></div>
+</div>
+<div class="grid gap-4 opacity-70 hover:opacity-100 transition-opacity">
+<!-- Past Card 1 -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden flex flex-col md:flex-row items-center p-4 border border-outline-variant/5">
+<div class="w-full md:w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Close-up of DJ hands on a mixer in a dark club environment with glowing equipment lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByKe-oNuc7fpcJgnJW02a41AZyzPIS6vtfrRb4tT17NlIZd-G2Z0-cElpuv5AiAorUXNnRhST843PDlOIPKBH88e-kskUJW-ZLfHAaE0p7Q8Nf9N7UfkxSFzsZP8kh9xQhEZbP5XyF2i82LRd8F0Og6zQgTCW9ADYFUzv28BOm9JcXXxOjUOBumTnXEGHT-AgktYygx3PYD6VgNJl82hpUGjSh4eqI6f7X4OIhkFrE6e8oX4ui1HUq1qI9PPEg9rnPYJpna4Tdc1o"/>
+</div>
+<div class="flex-grow px-6 py-4 md:py-0">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h4 class="font-bold font-headline text-on-surface">Solstice Rave 2024</h4>
+<p class="text-xs text-on-surface-variant">Sept 21, 2024 • Industrial District</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-3 py-1 bg-surface-container-highest text-outline text-[10px] font-bold uppercase tracking-widest rounded-full">Used</span>
+<button class="text-primary text-sm font-bold hover:underline">Rebook</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Past Card 2 -->
+<div class="bg-surface-container-low rounded-xl overflow-hidden flex flex-col md:flex-row items-center p-4 border border-outline-variant/5">
+<div class="w-full md:w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale" data-alt="Elegant ballroom setting with sparkling chandeliers and people in formal evening attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0DGDboUBvjJ6WaS0hwugY02TDVqAdkcjHYYzuTambpcnLcP5SIqhmuXO0f9kxm9ePy1-aqhsG1X8A3SMxL61l1T1fSiRQFhU_sExwIZHHzDCpet0PY4wQhAzd9xTLndBerUHLnu8-sF8wToJnLTUtU-_DtxjMTtLUouDbfCvvn1SJKgKnN_klNj3gPUS50GuUKRtav7aCRXE_Kt_4PyehKc3gNs-KMat6XbnFxVWSShPcebI_Hy3E7OOQkDSQqRwqrUqaxHnmk1A"/>
+</div>
+<div class="flex-grow px-6 py-4 md:py-0">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h4 class="font-bold font-headline text-on-surface">Crystal Gala Night</h4>
+<p class="text-xs text-on-surface-variant">Aug 15, 2024 • Grand Hotel Ballroom</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-3 py-1 bg-surface-container-highest text-outline text-[10px] font-bold uppercase tracking-widest rounded-full">Used</span>
+<button class="text-primary text-sm font-bold hover:underline">Rebook</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto border-t border-white/5 bg-[#0e0e0f]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-bold text-[#d0bcff] font-headline uppercase tracking-tighter">Nocturne</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40">© 2024 Nocturne. The Digital Nocturne.</span>
+</div>
+<div class="flex gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Legal</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Privacy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Support</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<!-- Bottom Nav for Mobile -->
+<div class="md:hidden fixed bottom-0 left-0 w-full glass-card border-t border-outline-variant/10 z-50">
+<div class="flex justify-around items-center h-16">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Explore</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Bookings</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">star</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">VIP</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nocturne Admin - Bookings Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#93000a",
+                    "secondary": "#4cd7f6",
+                    "inverse-surface": "#e5e2e3",
+                    "primary-fixed-dim": "#d0bcff",
+                    "on-surface": "#e5e2e3",
+                    "on-primary-container": "#340080",
+                    "tertiary-container": "#ca801e",
+                    "surface-bright": "#3a393a",
+                    "surface-tint": "#d0bcff",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "outline-variant": "#494454",
+                    "surface-container-highest": "#353436",
+                    "on-primary-fixed": "#23005c",
+                    "outline": "#958ea0",
+                    "surface": "#131314",
+                    "on-secondary-fixed": "#001f26",
+                    "on-secondary-container": "#00424e",
+                    "secondary-fixed": "#acedff",
+                    "error": "#ffb4ab",
+                    "on-background": "#e5e2e3",
+                    "secondary-container": "#03b5d3",
+                    "on-primary": "#3c0091",
+                    "on-tertiary-container": "#3f2300",
+                    "surface-container-lowest": "#0e0e0f",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-error": "#690005",
+                    "tertiary-fixed": "#ffdcbb",
+                    "tertiary": "#ffb869",
+                    "on-surface-variant": "#cbc3d7",
+                    "inverse-on-surface": "#313031",
+                    "inverse-primary": "#6d3bd7",
+                    "surface-container": "#201f20",
+                    "on-tertiary-fixed-variant": "#673d00",
+                    "primary-container": "#a078ff",
+                    "tertiary-fixed-dim": "#ffb869",
+                    "background": "#131314",
+                    "primary-fixed": "#e9ddff",
+                    "on-primary-fixed-variant": "#5516be",
+                    "surface-dim": "#131314",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary": "#003640",
+                    "primary": "#d0bcff",
+                    "surface-container-high": "#2a2a2b",
+                    "on-tertiary": "#482900",
+                    "surface-container-low": "#1c1b1c",
+                    "on-tertiary-fixed": "#2c1700",
+                    "surface-variant": "#353436"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131314;
+            color: #e5e2e3;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(42, 42, 43, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-primary {
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.1);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(6, 182, 212, 0.1), transparent 40%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col hero-gradient">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131314]/80 backdrop-blur-[20px] bg-gradient-to-b from-[#131314] to-transparent shadow-[0_0_40px_rgba(139,92,246,0.1)]">
+<div class="flex justify-between items-center px-8 h-20 w-full font-['Plus_Jakarta_Sans'] tracking-[-0.02em]">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-black tracking-tighter text-[#d0bcff] uppercase">Nocturne</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#e5e2e3]/70 font-medium hover:text-[#4cd7f6] transition-all duration-300" href="#">Explore</a>
+<a class="text-[#d0bcff] border-b-2 border-[#8B5CF6] pb-1 hover:text-[#4cd7f6] transition-all duration-300" href="#">Bookings</a>
+<a class="text-[#e5e2e3]/70 font-medium hover:text-[#4cd7f6] transition-all duration-300" href="#">VIP</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="bg-surface-container-lowest border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary outline-none text-on-surface" placeholder="Search bookings..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant active:scale-95 transition-transform cursor-pointer">
+<img alt="User avatar" data-alt="Close-up portrait of a stylish man with a modern haircut in dramatic moody studio lighting with neon purple highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCjOlVed8Ta8giZECel2qya2z-wfrVoq1Svkvk7aQeKnznfxWXUSFttkHktwoyfEKN_pusZ5AtTD-ZwZXKhA_S8-S1lM0t1Y9VdXITRFCsdNPJqPMsxtiXSK-hkwjfPjpXXdJkGDfBtut8SWgJfhliYOlubxM_P3YQYLThjxfzcJ37GiQXn8m-eJDB1WBnm35obwzfY2btXj5zLfKke0HPYee4__YotGEF7o5MBNnrBnhJEB6xBwW8AJKNOVVWekGW7P0YtzE3pRM"/>
+</div>
+<button class="hidden md:block bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-xl font-semibold text-sm active:scale-95 transition-transform glow-primary">
+                    Create Event
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-20 px-8 max-w-7xl mx-auto w-full">
+<!-- Header & Breadcrumbs -->
+<header class="mb-10">
+<div class="flex items-center gap-2 text-xs font-label uppercase tracking-widest text-outline mb-4">
+<span>Admin</span>
+<span class="material-symbols-outlined text-[10px]">chevron_right</span>
+<span class="text-secondary">Bookings Dashboard</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-4xl font-headline font-extrabold tracking-tight text-on-surface mb-2">Manage Bookings</h1>
+<p class="text-on-surface-variant max-w-xl">Monitor real-time reservations, revenue flow, and event occupancy across the Nocturne network.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 bg-surface-container-high text-on-surface px-4 py-2.5 rounded-xl text-sm font-medium border border-outline-variant/20 hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">file_download</span>
+                        Export CSV
+                    </button>
+</div>
+</div>
+</header>
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Total Revenue -->
+<div class="bg-surface-container-low rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<span class="text-xs font-label text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +12.5%
+                    </span>
+</div>
+<p class="text-sm font-label uppercase tracking-widest text-outline mb-1">Total Revenue</p>
+<h2 class="text-3xl font-headline font-bold text-on-surface">$142,850.00</h2>
+</div>
+<!-- Total Tickets Sold -->
+<div class="bg-surface-container-low rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-secondary/10 transition-colors"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="bg-secondary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-secondary">confirmation_number</span>
+</div>
+<span class="text-xs font-label text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +8.2%
+                    </span>
+</div>
+<p class="text-sm font-label uppercase tracking-widest text-outline mb-1">Total Tickets Sold</p>
+<h2 class="text-3xl font-headline font-bold text-on-surface">3,240</h2>
+</div>
+<!-- Active Events -->
+<div class="bg-surface-container-low rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary/5 rounded-full -mr-16 -mt-16 blur-3xl group-hover:bg-tertiary/10 transition-colors"></div>
+<div class="flex items-center justify-between mb-4">
+<div class="bg-tertiary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-tertiary">calendar_month</span>
+</div>
+<span class="text-xs font-label text-outline">Active Now</span>
+</div>
+<p class="text-sm font-label uppercase tracking-widest text-outline mb-1">Active Events</p>
+<h2 class="text-3xl font-headline font-bold text-on-surface">18</h2>
+</div>
+</section>
+<!-- Filters & Data Table Section -->
+<section class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10">
+<!-- Table Header / Filters -->
+<div class="p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-outline-variant/10">
+<div class="flex flex-wrap items-center gap-4">
+<div class="relative">
+<select class="appearance-none bg-surface-container-high text-on-surface border-none rounded-xl py-2 pl-4 pr-10 text-sm focus:ring-1 focus:ring-primary cursor-pointer">
+<option>All Events</option>
+<option>Midnight Gala</option>
+<option>Neon Underground</option>
+<option>Cipher Lounge</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-sm pointer-events-none text-outline">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-high text-on-surface border-none rounded-xl py-2 pl-4 pr-10 text-sm focus:ring-1 focus:ring-primary cursor-pointer">
+<option>Last 30 Days</option>
+<option>This Week</option>
+<option>Custom Date</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-sm pointer-events-none text-outline">calendar_today</span>
+</div>
+<button class="p-2 bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-colors border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+</button>
+</div>
+<p class="text-xs font-label text-outline">Showing 1-10 of 254 bookings</p>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/30">
+<th class="px-6 py-4 text-xs font-label uppercase tracking-widest text-outline">User</th>
+<th class="px-6 py-4 text-xs font-label uppercase tracking-widest text-outline">Event</th>
+<th class="px-6 py-4 text-xs font-label uppercase tracking-widest text-outline text-center">Seats</th>
+<th class="px-6 py-4 text-xs font-label uppercase tracking-widest text-outline">Amount</th>
+<th class="px-6 py-4 text-xs font-label uppercase tracking-widest text-outline">Status</th>
+<th class="px-6 py-4 text-xs font-label uppercase tracking-widest text-outline text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User" data-alt="Portrait of a smiling young professional man with short dark hair in high-key natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA88L7g8fGe4A55SvN19VmtBljxOzru1t-atSB_P47UaM0mEyEa4QeVoxZs3L1YhJ26QxEGRrV7FlNO7qbE3HtBtjGaGJH_RT5H4XOlWVy-BrSriyWaCkj7tqh7KoH3oVnFnvvRteLPMf9gqLIJBng_U__tbW_I5C8u1HA_hLXbbkDhGA_el-sDUDjB6O4dc2dgNq_8VjWS6CixuyEsVAFZDoJ--UIX8C3vltIJwUbW7PgyF2kjGJ5zplfntrCKh0hxbc66d-rJZD0"/>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Adrian Thorne</div>
+<div class="text-[11px] text-outline">athorne@email.com</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-on-surface">Midnight Gala: Velvet Noir</div>
+<div class="text-[11px] text-outline">Oct 24, 2024 • Table 04</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm text-on-surface font-medium">04</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-bold text-on-surface">$1,200.00</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary/10 text-secondary border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                                    Paid
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User" data-alt="Close-up portrait of a young woman with a warm expression in soft sunset lighting against a green park background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9MthCvrEb8wZdCjkAGawyfxp5oNJ1Kx5HJJcXAiJoj56uIDxK0e-0hgADnexhmOcqhhfpv3Y0anigAf75jNOa8uk7TR0FBQXthbSfVPHyIWiXkE4ybD-k387dkmaDLJdabxm1v6E_E9PlH0V8eOP6wtHsbe2OGORRIZIfpyFkShAgSqwn2lKB4MK_2CnD_h1R1alUSFFf3EJgEau-m-wLanTo7lsfocy_E3LqsaUm8VmBbVVeB0ysa3TVMJldTCBtxWV_yvkby9g"/>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Elena Vance</div>
+<div class="text-[11px] text-outline">elena.v@digital.co</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-on-surface">Cipher Lounge: Exclusive</div>
+<div class="text-[11px] text-outline">Oct 22, 2024 • Bar Seating</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm text-on-surface font-medium">02</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-bold text-on-surface">$450.00</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-tertiary/10 text-tertiary border border-tertiary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                    Pending
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User" data-alt="Portrait of a man with spectacles in professional attire against a blurred office background in cool daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8OiXKRBGN4Yzzl9l6F6SOi61WbNo2zQ-lwkDokNfdUb23pjDdXBKbZnCzBicVxm6JZISXPFBVv7IjCTzQGYVTf39gOpN1zSudPKIU_T_99zyLcphPAKSiqrE19pHFdHBQ82BEO8T0qMn2WH0Ia0SQ1KD5LGiLNJx-PA-rrNJrrh4icLTMv0guIq959vU0p9XVCuLI7bv18rLuJa0mKzguCRRtL_dLJ6VrOVdaj8KsgolVQUp8GUqB8Vo2_R5vgGZ7xq7qoI0H-us"/>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Julian Mars</div>
+<div class="text-[11px] text-outline">j.mars@agency.net</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-on-surface">Neon Underground: Rave</div>
+<div class="text-[11px] text-outline">Oct 20, 2024 • VIP Booth</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm text-on-surface font-medium">06</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-bold text-on-surface">$2,400.00</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary/10 text-secondary border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Paid
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User" data-alt="Dramatic high-fashion portrait of a young woman with creative makeup in moody neon lighting with shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXQQWzlziyWROIrbaj3QUMwBfMuMblpN5g-xZqpH_JqffvrFTu0QY4sNEMmeFmTMwaVs6yjLSH-lGoJKuw8OEFyk4_9eZz3DSzKhqu4l2gjfIkgSWGpL28JUiCdoTgN81dELTiZnD1YdyHd_q44KNqmnEjEfqCavSD3cD5_GktrzwaNeBRsgts_kKpuERPKvnDa5Soh1RU8Vn5eWvof3u8aG7f9zLPZO58jOYbavUI5HyjfR601A5k81VDKZCgZecLIXL9JHp1O-U"/>
+</div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Sasha K.</div>
+<div class="text-[11px] text-outline">sasha.k@vogue.com</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm text-on-surface">Midnight Gala: Velvet Noir</div>
+<div class="text-[11px] text-outline">Oct 24, 2024 • Standing</div>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="text-sm text-on-surface font-medium">01</span>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-bold text-on-surface">$150.00</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary/10 text-secondary border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Paid
+                                </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-6 flex items-center justify-between border-t border-outline-variant/10">
+<button class="text-sm text-outline hover:text-on-surface transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+                    Previous
+                </button>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-xs font-medium transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-xs font-medium transition-colors">3</button>
+<span class="text-outline">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-high text-xs font-medium transition-colors">26</button>
+</div>
+<button class="text-sm text-outline hover:text-on-surface transition-colors flex items-center gap-1">
+                    Next
+                    <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-[#0e0e0f] border-t border-white/5 font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6">
+<div class="flex items-center gap-8">
+<span class="font-bold text-[#d0bcff]">Nocturne</span>
+<span class="text-[#e5e2e3]/40 normal-case">© 2024 Nocturne. The Digital Nocturne.</span>
+</div>
+<div class="flex gap-8">
+<a class="text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Legal</a>
+<a class="text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Privacy</a>
+<a class="text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Support</a>
+<a class="text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

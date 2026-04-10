@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nocturne | Ticket Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "secondary": "#4cd7f6",
+                        "inverse-surface": "#e5e2e3",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-surface": "#e5e2e3",
+                        "on-primary-container": "#340080",
+                        "tertiary-container": "#ca801e",
+                        "surface-bright": "#3a393a",
+                        "surface-tint": "#d0bcff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "outline-variant": "#494454",
+                        "surface-container-highest": "#353436",
+                        "on-primary-fixed": "#23005c",
+                        "outline": "#958ea0",
+                        "surface": "#131314",
+                        "on-secondary-fixed": "#001f26",
+                        "on-secondary-container": "#00424e",
+                        "secondary-fixed": "#acedff",
+                        "error": "#ffb4ab",
+                        "on-background": "#e5e2e3",
+                        "secondary-container": "#03b5d3",
+                        "on-primary": "#3c0091",
+                        "on-tertiary-container": "#3f2300",
+                        "surface-container-lowest": "#0e0e0f",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#ffdcbb",
+                        "tertiary": "#ffb869",
+                        "on-surface-variant": "#cbc3d7",
+                        "inverse-on-surface": "#313031",
+                        "inverse-primary": "#6d3bd7",
+                        "surface-container": "#201f20",
+                        "on-tertiary-fixed-variant": "#673d00",
+                        "primary-container": "#a078ff",
+                        "tertiary-fixed-dim": "#ffb869",
+                        "background": "#131314",
+                        "primary-fixed": "#e9ddff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "surface-dim": "#131314",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#003640",
+                        "primary": "#d0bcff",
+                        "surface-container-high": "#2a2a2b",
+                        "on-tertiary": "#482900",
+                        "surface-container-low": "#1c1b1c",
+                        "on-tertiary-fixed": "#2c1700",
+                        "surface-variant": "#353436"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .holographic-overlay {
+            background: linear-gradient(135deg, rgba(208, 188, 255, 0.2) 0%, rgba(76, 215, 246, 0.2) 50%, rgba(255, 184, 105, 0.2) 100%);
+            background-size: 200% 200%;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+        .glass-card {
+            background: rgba(42, 42, 43, 0.6);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#131314]/80 backdrop-blur-[20px] shadow-[0_0_40px_rgba(139,92,246,0.1)]">
+<nav class="flex justify-between items-center px-8 h-20 w-full font-['Plus_Jakarta_Sans'] tracking-[-0.02em]">
+<div class="flex items-center gap-12">
+<a class="text-2xl font-black tracking-tighter text-[#d0bcff] uppercase" href="#">Nocturne</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#e5e2e3]/70 font-medium hover:text-[#4cd7f6] transition-all duration-300" href="#">Explore</a>
+<a class="text-[#d0bcff] border-b-2 border-[#8B5CF6] pb-1 hover:text-[#4cd7f6] transition-all duration-300" href="#">Bookings</a>
+<a class="text-[#e5e2e3]/70 font-medium hover:text-[#4cd7f6] transition-all duration-300" href="#">VIP</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="hidden lg:flex items-center bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 rounded-xl font-bold active:scale-95 transition-transform">
+                    Create Event
+                </button>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors" data-icon="notifications">notifications</span>
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img alt="User avatar" data-alt="Close up portrait of a stylish person with modern aesthetic against a dark textured urban background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2EpCZogxYWX5rV3-iz-CVbxqGkO9hLx4FRu6_GhBMGoSWzyqPemLZpqscpJZjPNfaui8wciJh_6h8LdBQ9-VBbV9j47rd9h8SKH1yPZvXex5EnHJlOQvZxgnb1pgrtW8E5IdiPmZQeLdSxmDVb5tfvJ4It48uy3gFpZ8xjMAf1tAHdrr_n0QEBsoJjbPPnLz8UZwr3Szh6x-ZZEkqoDit-duGzkgx-jlziOQsBlUYa9T1kSlyOJjbMikm0rZcJ3-I4u6HYcXRyZM"/>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<main class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
+<!-- Confirmation Header -->
+<div class="flex flex-col items-center text-center mb-16">
+<div class="w-16 h-16 bg-secondary-container/20 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(3,181,211,0.2)]">
+<span class="material-symbols-outlined text-secondary text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-headline font-extrabold tracking-tighter mb-4 text-on-surface">You're going to the show!</h1>
+<p class="text-on-surface-variant max-w-lg text-lg leading-relaxed">Your reservation is confirmed. We've sent a digital copy to your email. Get ready for an unforgettable night at Nocturne.</p>
+</div>
+<div class="grid lg:grid-cols-12 gap-12 items-start">
+<!-- Main Ticket Display -->
+<div class="lg:col-span-8 flex justify-center">
+<div class="relative w-full max-w-2xl">
+<!-- Holographic Glow Base -->
+<div class="absolute -inset-4 bg-gradient-to-r from-primary/20 via-secondary/20 to-tertiary/20 blur-3xl opacity-50 rounded-[2rem]"></div>
+<!-- Ticket Component -->
+<div class="relative glass-card border border-outline-variant/20 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row">
+<!-- Holographic Finish Overlay -->
+<div class="absolute inset-0 holographic-overlay opacity-30"></div>
+<!-- Event Poster Section -->
+<div class="w-full md:w-2/5 aspect-[3/4] md:aspect-auto relative">
+<img alt="Event Poster" class="absolute inset-0 w-full h-full object-cover" data-alt="Cinematic wide shot of a futuristic electronic dance music festival with laser beams and glowing neon structures in deep purple and cyan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlollw2S6BDRyuLGUBT6BAWAuSkh4I3jPZiD6jpMy-NcRcs60_3VOf-pJvCyfYxeE3eKv0qOAtx6TlIW_DDWemGL3Ohnjf70-hiimJca8yOIyUQFIkOzwainQ_F4mxv0VWDOyF6dYF9Nl5-eQ6Wahwp6rAVzGMmf0HRQ0pAdb-aZ2OnGZQH4BkqJsWhC7sQ7CUq4NeYmr0AE-Qy_zGHMQydMFqlb3HNPpZEUpytShYHd_nM3CUGtMQmk-z1Ng7mK-S1vL78cVDstU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="bg-secondary text-on-secondary px-3 py-1 rounded-lg text-xs font-bold tracking-widest uppercase">VIP Pass</span>
+</div>
+</div>
+<!-- Ticket Details Section -->
+<div class="flex-1 p-8 flex flex-col justify-between bg-surface-container-low/40">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="text-secondary text-[0.65rem] font-bold tracking-[0.2em] uppercase mb-1">Electronic Series 04</p>
+<h2 class="text-3xl font-headline font-black tracking-tight text-primary">CYBER_PULSE</h2>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant text-[0.65rem] font-bold uppercase">Order #</p>
+<p class="text-on-surface font-mono text-sm">NC-8829-XL</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-y-8 gap-x-4 mb-8">
+<div>
+<p class="text-on-surface-variant text-[0.65rem] font-bold tracking-wider uppercase mb-1">Date</p>
+<p class="text-on-surface font-semibold">Dec 24, 2024</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[0.65rem] font-bold tracking-wider uppercase mb-1">Doors</p>
+<p class="text-on-surface font-semibold">22:00 PM</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[0.65rem] font-bold tracking-wider uppercase mb-1">Section</p>
+<p class="text-on-surface font-semibold">MEZZANINE</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-[0.65rem] font-bold tracking-wider uppercase mb-1">Seat</p>
+<p class="text-on-surface font-semibold">ROW H, 12-13</p>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between pt-6 border-t border-outline-variant/30">
+<div class="flex flex-col gap-2">
+<p class="text-on-surface-variant text-[0.65rem] font-bold tracking-wider uppercase">Venue</p>
+<p class="text-on-surface font-bold">The Void Mainstage</p>
+<p class="text-on-surface-variant text-xs">88 Neon Way, Cyber City</p>
+</div>
+<div class="bg-white p-2 rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+<!-- QR Code Mockup -->
+<div class="w-20 h-20 bg-white flex items-center justify-center">
+<img alt="QR Code" class="w-full h-full object-contain mix-blend-multiply" data-alt="Clean abstract high contrast black and white geometric pattern representing a digital secure QR code" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPydfoHSegFR612pCc5nuwzDFT-8oOFYJn-JgfkjVvH4fQP96H0iGNXymV3-I17aI-Vj2IlIV7vxRXkBBgYfPvubHtUGm2zf9HAupDgXWQ3pyEH3mVNW-2Bt9AmSE7npiRrnuiSC9RZJDpnaXyMT3CcgG5EDtgBl2WiuU4AIuoBptWLT5Jl6-LUt6kaxhZdHr4d2pAnIucdFCIEskyAdWkfoxVPppmO51L6nJPKvxmz8XidK7duP3umVIqfqTcXr0nk8Dw2Ob1cFg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Sidebar -->
+<div class="lg:col-span-4 space-y-6">
+<div class="surface-container-high rounded-2xl p-8 border border-outline-variant/10 shadow-xl">
+<h3 class="text-xl font-headline font-bold mb-6">Manage Ticket</h3>
+<div class="flex flex-col gap-4">
+<button class="w-full py-4 px-6 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold flex items-center justify-center gap-3 active:scale-95 transition-transform shadow-[0_0_30px_rgba(139,92,246,0.3)]">
+<span class="material-symbols-outlined" data-icon="add_to_home_screen">add_to_home_screen</span>
+                            Add to Apple Wallet
+                        </button>
+<button class="w-full py-4 px-6 rounded-xl bg-surface-container-highest text-on-surface font-bold border border-outline-variant/30 flex items-center justify-center gap-3 hover:bg-surface-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                            Download PDF
+                        </button>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-low border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary" data-icon="share">share</span>
+<div class="flex-1">
+<p class="text-sm font-semibold">Share the night</p>
+<p class="text-xs text-on-surface-variant">Let friends know you're attending.</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Info Bento Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-2xl p-6">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+<h4 class="font-bold text-sm uppercase tracking-widest">Entry Requirements</h4>
+</div>
+<ul class="space-y-3">
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="badge">badge</span>
+                            Valid photo ID required for entry (21+)
+                        </li>
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="no_photography">no_photography</span>
+                            No professional cameras allowed
+                        </li>
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="styler">styler</span>
+                            Dress code: Avant-garde / Evening
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Recommendations Grid -->
+<section class="mt-32">
+<div class="flex justify-between items-end mb-10">
+<div>
+<span class="text-secondary text-xs font-bold tracking-[0.3em] uppercase mb-2 block">Elevate your night</span>
+<h2 class="text-3xl font-headline font-black tracking-tight">Complete your Experience</h2>
+</div>
+<a class="text-primary text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all" href="#">
+                    View All Upgrades <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Upgrade Card 1 -->
+<div class="group relative surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 transition-all hover:bg-surface-container-high">
+<div class="aspect-video relative overflow-hidden">
+<img alt="Bottle Service" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="High-end nightclub bottle service with glowing ice buckets and premium spirits in a luxury private booth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDorJn4cdnt6u7Ws3iPFywNyCXBcKtcePlnuBZ7kGh_ACtXJMXGElp3pMeTfYDlyY3BE1KpMi_FtNNv0Pz_4GRqDH596eKTkMp6NYzMPyu11cszYx04j40-WDOpx_-WtFxsbRnfGZQ9ofA3TRTTupLapDdF19nguBM8JRdf1rjPMsVeio-MfTZlESnDEY8CTOdOsspIGecLaTxZuf906vCTDlLUPcCIdoCjRlT7_6IgcdiLm4zkHp6W0PauTY5fA8_qcNE2oJBBOh8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg">Private Booth</h3>
+<span class="text-tertiary font-bold">$450</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6">Premium spirits and dedicated service for up to 6 guests.</p>
+<button class="w-full py-3 rounded-lg border border-primary/30 text-primary font-bold text-sm hover:bg-primary hover:text-on-primary transition-all">Add to Reservation</button>
+</div>
+</div>
+<!-- Upgrade Card 2 -->
+<div class="group relative surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 transition-all hover:bg-surface-container-high">
+<div class="aspect-video relative overflow-hidden">
+<img alt="Valet" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Sleek modern black luxury car being parked by a valet under dramatic urban night lighting with neon highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJUqaVyM-BjjkZMNU96LcHheDpR8U37HfBMoqFoJCZtPc9tBWtqcs1l_0tYYP9s-hHCMVCXYP_mfXH1YfnJzConRK859Hw2IRFnodSkkAcL9BBPUhEXk-y_x0ZciX44Ot89rMNde-8E3oqhur8FQ3YIfyve24KX2XP-fDTBZzy5s5dR_b-YEO3kcqoZhEO4n4W3IjIuE4TyHi9DODB9rT_lo4kVTQ3eGEmZ2blrla_mUSuWgdn7cVUDvWYqQsweTsNuch0gjfLoHM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg">VIP Valet</h3>
+<span class="text-tertiary font-bold">$45</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6">Fast-track parking and priority exit at the end of the event.</p>
+<button class="w-full py-3 rounded-lg border border-primary/30 text-primary font-bold text-sm hover:bg-primary hover:text-on-primary transition-all">Add to Reservation</button>
+</div>
+</div>
+<!-- Upgrade Card 3 -->
+<div class="group relative surface-container-low rounded-2xl overflow-hidden border border-outline-variant/10 transition-all hover:bg-surface-container-high">
+<div class="aspect-video relative overflow-hidden">
+<img alt="Backstage" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Atmospheric shot behind the scenes of a major music stage with cables, technical equipment, and distant bright performance lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg34Jl3MxYnrSY3oMB2lrJUYNKPVLIGwlTjRka1hHXsvxcIA7osIO-AHyLWQq1JgKE7oheRtxQ0chrnArIr8BuVSjdDMsslHbzeWh6aId4OTi9uRVO54HmWk2xOQv-1q_h5LHsrI-tSvTWBfKtMNamb5y4VWB-tkxFm4PIApxAOItvq_0c3JAIFV6xFK2pCHJBloSdv_M_jM9rnR4QHgNbnqFhMMhQYpCm6y5DL0F6Q79J6Kl01aKVXn9jv0_UIY-0D4TEHYdAWo8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-bold text-lg">Backstage Pass</h3>
+<span class="text-tertiary font-bold">$120</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6">Exclusive access to the artist lounge and private viewing deck.</p>
+<button class="w-full py-3 rounded-lg border border-primary/30 text-primary font-bold text-sm hover:bg-primary hover:text-on-primary transition-all">Add to Reservation</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto border-t border-white/5 bg-[#0e0e0f]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-bold text-[#d0bcff] text-xl tracking-tighter uppercase">Nocturne</span>
+<p class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40">© 2024 Nocturne. The Digital Nocturne.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Legal</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Privacy</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Support</a>
+<a class="font-['Plus_Jakarta_Sans'] text-sm tracking-wide uppercase text-[#e5e2e3]/40 hover:text-[#06B6D4] transition-colors duration-200" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>
