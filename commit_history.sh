@@ -157,3 +157,4 @@ git diff --cached --quiet || GC "2026-04-22" "feat(oop): finalize BaseRepository
 echo "✅ All commits done!"
 git log --format="%ad %s" --date=short
 # Admin EventForm fix: moved component to module scope to prevent focus loss
+# BookingHistory zoom fix: reduced heading from text-5xl to text-3xl, trimmed padding
