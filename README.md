@@ -1,31 +1,63 @@
 # Event Ticket Booking System
 
-Full-stack web app — Node.js + Express + Prisma (PostgreSQL) backend, React + TypeScript frontend.
+A premium, full-stack event booking platform designed with a robust modular architecture and modern web aesthetics.
 
-## Setup
+## 🚀 Deployment
+
+The application is architected for cloud-native deployment:
+- **Frontend**: Deployed on **Vercel** ([Live Demo](https://event-booking-frontend-three.vercel.app))
+- **Backend**: Deployed on **Render** (Express.js)
+- **Database**: **Neon** (Serverless PostgreSQL)
+
+## 🛠️ Tech Stack
+
+### Core
+- **Frontend**: React 19, TypeScript, Vite
+- **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL with Prisma ORM
+
+### UI/UX
+- **Styling**: Tailwind CSS v4 (Glassmorphism, Neon aesthetics)
+- **Icons**: Google Material Symbols
+- **Typography**: Plus Jakarta Sans & Inter
+
+## 🏗️ Architecture & OOP Principles
+
+This project follows strict software engineering practices and clean code principles:
+
+- **Inheritance**: Implemented via a generic `BaseRepository<T>` providing common CRUD operations and utilities.
+- **Abstraction**: Services are defined through explicit interfaces (`IAuthService`, `IEventService`, etc.), decoupling business logic from implementation.
+- **Polymorphism**: Interface-based service injection allows for easy substitution of modules (e.g., swapping payment providers).
+- **Design Patterns**: 
+  - **Repository Pattern**: Clean data access layer.
+  - **Service Layer Pattern**: Separation of concerns.
+  - **Facade Pattern**: `BookingService` orchestrates complex interactions between seats, payments, and tickets.
+  - **Strategy Pattern**: Flexible payment and QR generation modules.
+
+## ⚙️ Setup
 
 ### Prerequisites
-- Node.js 18+
-- PostgreSQL running locally
+- Node.js 20+
+- PostgreSQL (Local or Cloud)
 
 ### Backend
 
 ```bash
 cd backend
 npm install
+npx prisma generate
+npm run build
+npm start
 ```
 
-Update `.env` with your PostgreSQL credentials:
-```
-DATABASE_URL="postgresql://<user>:<password>@localhost:5432/eventbooking"
+Update `backend/.env`:
+```env
+DATABASE_URL="your_db_url"
 JWT_SECRET="your_secret"
-PORT=5000
-```
-
-Run migrations and start:
-```bash
-npx prisma migrate dev --name init
-npm run dev
+PORT=5001
+CLOUDINARY_CLOUD_NAME="..."
+CLOUDINARY_API_KEY="..."
+CLOUDINARY_API_SECRET="..."
 ```
 
 ### Frontend
@@ -33,43 +65,13 @@ npm run dev
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run build
+npm run preview
 ```
 
-Frontend runs on `http://localhost:5173`, backend on `http://localhost:5000`.
-
-## Architecture
-
-### Backend — Controller → Service → Repository
-
-| Layer | Responsibility |
-|---|---|
-| Controller | Handle HTTP request/response |
-| Service | Business logic (seat locking, payment, ticket) |
-| Repository | Database access via Prisma |
-| Model | Domain classes with behaviour |
-
-### Key Features
-- **Seat locking** — seats locked for 10 min during checkout, auto-released via interval
-- **Concurrency safety** — `updateMany` with `WHERE status = AVAILABLE` prevents double booking
-- **Role-based access** — JWT middleware, Admin-only routes
-- **QR tickets** — generated with `qrcode` npm package on booking confirmation
-- **Simulated payment** — always succeeds, returns a transaction ID
-
-### API Routes
-
-| Method | Route | Auth |
-|---|---|---|
-| POST | /api/auth/register | Public |
-| POST | /api/auth/login | Public |
-| GET | /api/events | Public |
-| GET | /api/events/:id | Public |
-| GET | /api/events/:id/seats | Public |
-| POST | /api/events | Admin |
-| PUT | /api/events/:id | Admin |
-| DELETE | /api/events/:id | Admin |
-| POST | /api/bookings/lock-seats | User |
-| POST | /api/bookings/:id/payment | User |
-| GET | /api/bookings/my | User |
-| DELETE | /api/bookings/:id | User |
-| GET | /api/bookings/all | Admin |
+## 📋 Key Features
+- **Real-time Seat Locking**: Seats are reserved for 10 minutes during checkout; expired locks are auto-released.
+- **Concurrency Protection**: Atomic database updates prevent double-booking.
+- **Admin Dashboard**: Comprehensive event management and booking analytics.
+- **Dynamic Tickets**: Instant QR code generation for venue scanning.
+- **Responsive Design**: Fluid layouts optimized for both mobile and desktop.
