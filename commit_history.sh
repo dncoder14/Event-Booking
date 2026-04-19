@@ -158,3 +158,4 @@ echo "✅ All commits done!"
 git log --format="%ad %s" --date=short
 # Admin EventForm fix: moved component to module scope to prevent focus loss
 # BookingHistory zoom fix: reduced heading from text-5xl to text-3xl, trimmed padding
+# QR fix: pass qrCode UUID to BookingConfirmed, generate image via qrserver API at proper size
