@@ -23,6 +23,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+// Health check — used by Render to verify the service is alive
+app.get('/', (_req, res) => res.json({ status: 'ok', service: 'event-booking-api' }));
+
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/bookings', bookingRoutes);
