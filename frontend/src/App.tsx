@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import type { ReactNode } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -13,12 +14,12 @@ import BookingHistory from './pages/BookingHistory';
 import Admin from './pages/Admin';
 import AdminLogin from './pages/AdminLogin';
 
-function PrivateRoute({ children }: { children: JSX.Element }) {
+function PrivateRoute({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   return user ? children : <Navigate to="/login" />;
 }
 
-function AdminRoute({ children }: { children: JSX.Element }) {
+function AdminRoute({ children }: { children: ReactNode }) {
   const { user } = useAuth();
   return user?.role === 'ADMIN' ? children : <Navigate to="/admin/login" />;
 }
